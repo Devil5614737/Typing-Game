@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <metah ttp-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./favicon.ico">
+    <link rel="stylesheet" href="index.css">
+    <title>Typing School</title>
+</head>
+<body class="mode ">
+    <div class="main-container dark">
+        <div class="top-container">
+            <p class="logo">Typing<span>School</span></p>
+            <p class="mode">Dark mode: <span id="mode-toggle"
+                style="cursor: pointer;">off</span></p>
+        </div>
+        <div class="score_container">
+            <div class="score-container">
+                <div class="scores">
+                    <p class="wpm">wpm</p>
+                    <p id="wpm" class="score"></p>
+                </div>
+                <div class="scores">
+                    <p class='wpm'>cpm</p>
+                    <p id="cpm" class="score"></p>
+                </div>
+                <div class="scores">
+                    <p class="wpm" >errors</p>
+                    <p id="error" class="score"></p>
+                </div>
+                <div class="scores">
+                    <p class="wpm">accuracy</p>
+                    <p class="score" id="accuracy"></p>
+                </div>
+            </div>
+            <div id="btn" class="button">Restart</div>
+        </div>
+        <div class="typing-section">
+            <div class="word-container">
+                <p class="word"></p>
+            </div>
+            <div class="input-container">
+                <textarea id="input" oninput="matchingInput()" class="input"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+<script defer src="index.js"></script>
+</html>
