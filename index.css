@@ -8,6 +8,8 @@
 
 body {
   overflow-x: hidden;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 html {
@@ -18,9 +20,9 @@ html {
 .main-container {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 1em 1em;
+  padding: 2em;
 }
 
 .main-container .top-container {
@@ -79,6 +81,8 @@ html {
 
 .correct {
   color: green;
+  -webkit-transition: color .1s ease-in-out;
+  transition: color .1s ease-in-out;
 }
 
 .wrong {
@@ -196,5 +200,19 @@ html {
   color: white;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+
+body.active {
+  background-color: black;
+  color: white;
+}
+
+body.active .word {
+  color: grey;
+}
+
+body.active #input {
+  background-color: #0f0f0f;
+  color: grey;
 }
 /*# sourceMappingURL=index.css.map */

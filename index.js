@@ -18,7 +18,8 @@ let errorsound = new Audio("error.wav");
 let words = [
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quisquam necessitatibus sapiente! Doloremque, culpa cupiditate! Neque animi fugiat nam quisquam consequatur esse fuga atque vero quod quas. Quasi, laborum delectus.",
 ];
-let dummy='Most of the important things in the world have been accomplished by people who have kept on trying when there seemed to be no hope at all.'
+let dummy =
+  "Most of the important things in the world have been accomplished by people who have kept on trying when there seemed to be no hope at all.";
 
 let total_errors = 0;
 let errors = 0;
@@ -61,7 +62,7 @@ function showQuote(word) {
     quoteNo = 0;
   }
 
-  matchingInput(word&&word);
+  matchingInput(word && word);
 }
 
 async function matchingInput(word) {
@@ -69,6 +70,10 @@ async function matchingInput(word) {
   current_input = inputContainer.value;
   current_input_array = current_input.split("");
 
+  
+  if(word&&word.length===current_input.length){
+    restart()
+  }
   // increment total characters typed
   // typingsound.play();
   characterTyped++;
@@ -82,15 +87,16 @@ async function matchingInput(word) {
       char.classList.remove("correct");
       char.classList.remove("wrong");
     } else if (typedChar === char.innerText) {
-      // typingsound.play();
-      // errorsound.pause();
+      typingsound.play();
+      errorsound.pause();
+
       char.classList.add("correct");
       char.classList.remove("wrong");
-
+    
       // incorrect characters
     } else {
-      // errorsound.play();
-      // typingsound.pause();
+      errorsound.play();
+      typingsound.pause();
       char.classList.add("wrong");
       char.classList.remove("correct");
 
@@ -116,14 +122,12 @@ async function matchingInput(word) {
   wpmContainer.textContent = wpm;
 
   // console.log(word ?word.length: dummy.length)
-  if(inputContainer.value.length==word&&word.length){
-    console.log(inputContainer.length)
-    showStats()
+  if (inputContainer.value.length == word && word.length) {
+    console.log(inputContainer.length);
+    showStats();
   }
   
-
-
-  }
+}
 
 matchingInput();
 
@@ -143,19 +147,6 @@ function updateTimer() {
 
 updateTimer();
 
-function themeSwitch() {
-  theme.addEventListener("click", () => {
-    body.classList.toggle("dark");
-    if (body.classList.value == "mode dark") {
-      theme.textContent = "on";
-    } else {
-      theme.textContent = "off";
-    }
-  });
-}
-
-themeSwitch();
-
 function restart() {
   scoreContainer.style.display = "none";
   typingSection.style.display = "block";
@@ -167,8 +158,25 @@ restartBtn.addEventListener("click", () => {
   restart();
 });
 
-
-function showStats(){
+function showStats() {
   scoreContainer.style.display = "block";
   typingSection.style.display = "none";
 }
+
+function themeSwitch() {
+  const btn = document.getElementById("mode-toggle");
+  if (localStorage.getItem("darkTheme")) {
+    document.body.classList.add("active");
+  }
+  btn.addEventListener("click", () => {
+    localStorage.setItem("darkTheme", "true");
+    document.body.classList.toggle("active");
+    btn.textContent = "on";
+    if (document.body.classList.contains("active")) {
+      localStorage.removeItem("darkTheme");
+      document.body.classList.remove("darkTheme");
+    }
+  });
+}
+
+themeSwitch();

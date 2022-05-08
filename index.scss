@@ -2,9 +2,9 @@
 
 .main-container {
   transition: all 0.3s ease-in;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 1em 1em;
+  padding: 2em;
   .top-container {
     display: flex;
     align-items: center;
@@ -50,8 +50,10 @@
 
 .correct {
   color: green;
-  // transition: all .3s ease-in-out;
+  transition: color .1s ease-in-out;
 }
+
+
 
 .wrong {
   color: red;
@@ -145,5 +147,18 @@
     background-color: #721be1;
     color: white;
     transition: all 0.3s ease-in-out;
+  }
+}
+
+body.active{
+  background-color: black;
+  color: white;
+  .word{
+    color:grey;
+  }
+  
+  #input{
+    background-color: #0f0f0f;
+    color: grey;
   }
 }
